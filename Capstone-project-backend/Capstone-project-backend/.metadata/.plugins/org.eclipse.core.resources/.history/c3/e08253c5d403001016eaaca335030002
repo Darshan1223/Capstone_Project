@@ -1,0 +1,27 @@
+package com.example.controller;
+
+import com.example.model.User;
+import com.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:4200")
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/register")
+    public User registerUser(@RequestBody User user) {
+        return userService.saveUser(user);
+    }
+
+    @PostMapping("/login")
+    public boolean loginUser(@RequestBody User user) {
+        Optional<User> foundUser = userService.findByEmail(user.getEmail());
+        return foundUser.isPresent() && foundUser.get().getPassword().equals(user.getPassword());
+    }
+}

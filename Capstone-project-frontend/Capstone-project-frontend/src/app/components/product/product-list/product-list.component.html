@@ -1,0 +1,21 @@
+<div class="product-list">
+  <header>
+      <h2>Product Inventory</h2>
+      <button class="add-btn" routerLink="/product/add">+ Add Product</button>
+  </header>
+
+  <div class="products">
+      <div *ngFor="let product of products" class="product-card">
+          <h3>{{ product.name }}</h3>
+          <p><strong>Price:</strong> Rs{{ product.price }}</p>
+          <p>{{ product.description }}</p>
+          <small>By: {{ product.manufacturer }}</small>
+
+          <div class="actions">
+              <button class="view" [routerLink]="['/product/view', product.id]">View</button>
+              <button class="edit" [routerLink]="['/product/edit', product.id]">Edit</button>
+              <button class="delete" (click)="deleteProduct(product.id)">Delete</button>
+          </div>
+      </div>
+  </div>
+</div>

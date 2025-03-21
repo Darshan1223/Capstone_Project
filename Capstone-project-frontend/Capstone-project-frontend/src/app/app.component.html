@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="logo">
+      <a routerLink="/">Product Inventory</a>
+  </div>
+  <nav class="nav">
+      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+      <ul class="nav-links" [ngClass]="{'show': isMenuOpen}">
+          <li><a routerLink="/products" (click)="toggleMenu()">Products</a></li>
+          <li><a routerLink="/about" (click)="toggleMenu()">About</a></li>
+          <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" (click)="toggleMenu()">Login</a></li>
+          <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" (click)="toggleMenu()">Register</a></li>
+          <li *ngIf="authService.isLoggedIn()">
+              <button class="logout-btn" (click)="logout()">Logout</button>
+          </li>
+      </ul>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 Products Inventory</p>
+</footer>

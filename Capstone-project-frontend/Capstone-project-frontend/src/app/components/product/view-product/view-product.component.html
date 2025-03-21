@@ -1,0 +1,15 @@
+<div class="product-details-container">
+  <div class="product-card">
+      <h2 class="product-title">{{ product.name }}</h2>
+
+      <div class="product-info">
+          <p><span>ID:</span> {{ product.id }}</p>
+          <p><span>Price:</span> Rs{{ product.price }}</p>
+          <p><span>Manufacturer:</span> {{ product.manufacturer }}</p>
+          <p><span>Description:</span> {{ product.description }}</p>
+          <p><span>Quantity:</span> {{ product.quantity }}</p>
+      </div>
+
+      <button class="back-btn" (click)="goBack()">Go Back</button>
+  </div>
+</div>

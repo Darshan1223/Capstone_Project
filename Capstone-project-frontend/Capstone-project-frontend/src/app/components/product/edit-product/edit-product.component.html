@@ -1,0 +1,42 @@
+<div class="edit-product-container">
+  <div class="edit-card">
+      <h2>Update Product</h2>
+      <p class="subtitle">Modify the product details and save changes.</p><div *ngIf="successMessage" class="alert success-alert">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert error-alert">{{ errorMessage }}</div>
+
+  <form #editProductForm="ngForm" (ngSubmit)="updateProduct()">
+      <div class="input-group">
+          <label for="name">Product Name</label>
+          <input type="text" id="name" [(ngModel)]="product.name" name="name" #name="ngModel" required>
+          <span *ngIf="name.invalid && name.touched" class="error-text">Product name is required.</span>
+      </div>
+
+      <div class="input-group">
+          <label for="price">Price (Rs)</label>
+          <input type="number" id="price" [(ngModel)]="product.price" name="price" #price="ngModel" required>
+          <span *ngIf="price.invalid && price.touched" class="error-text">Price is required.</span>
+      </div>
+
+      <div class="input-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel" required>
+          <span *ngIf="quantity.invalid && quantity.touched" class="error-text">Quantity is required.</span>
+      </div>
+
+      <div class="input-group">
+          <label for="manufacturer">Manufacturer</label>
+          <input type="text" id="manufacturer" [(ngModel)]="product.manufacturer" name="manufacturer" #manufacturer="ngModel" required>
+          <span *ngIf="manufacturer.invalid && manufacturer.touched" class="error-text">Manufacturer is required.</span>
+      </div>
+
+      <div class="input-group">
+          <label for="description">Description</label>
+          <textarea id="description" [(ngModel)]="product.description" name="description" #description="ngModel" required></textarea>
+          <span *ngIf="description.invalid && description.touched" class="error-text">Description is required.</span>
+      </div>
+
+      <button type="submit" class="edit-product-btn" [disabled]="editProductForm.invalid">Save Changes</button>
+  </form>
+
+  </div>
+</div>
